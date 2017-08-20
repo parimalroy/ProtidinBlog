@@ -265,7 +265,7 @@
                             </a>
                             <ul class="sub">
                                 <li><a href="{{url('categorie-add')}}">Add Categories</a></li>
-                                <li><a href="glyphicon.html">Manage Categories</a></li>
+                                <li><a href="{{url('categorie-manage')}}">Manage Categories</a></li>
                             </ul>
                         </li>
                         <li>
@@ -351,11 +351,13 @@
         <section id="main-content">
             @yield('content')
             <!-- footer -->
+            <?php if($footers == 1) { ?>
             <div class="footer">
                 <div class="wthree-copyright">
                     <p>© 2017 Admin. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
                 </div>
             </div>
+            <?php } ?>
             <!-- / footer -->
         </section>
         <!--main content end-->

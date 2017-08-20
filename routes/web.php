@@ -28,5 +28,10 @@ Route::get('admin-logout','SupperAdminController@adminLogout');
 
 
 Route::get('categorie-add','CategorieController@index')->name('categorie-add');
+Route::post('categorie-add','CategorieController@saveCategorie')->name('categorie-add');
+Route::get('categorie-manage','CategorieController@manageCategorie')->name('categorie-manage');
+Route::get('categorie-publish/{id}','CategorieController@unublishCategorie')->name('categorie-publish');
+Route::get('categorie-unpublish/{id}','CategorieController@publishCategorie')->name('categorie-unpublish');
+Route::get('categorie-delete/{id}','CategorieController@deleteCategorie')->name('categorie-delete');
 
 

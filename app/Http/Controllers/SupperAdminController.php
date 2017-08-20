@@ -8,7 +8,8 @@ use Session;
 class SupperAdminController extends Controller
 {
     public function index(){
-        return view('admin.home.dashboardContent');
+        $footers=1;
+        return view('admin.home.dashboardContent', ['footers' => $footers]);
     }
     
     public function adminLogout(){

@@ -52,16 +52,13 @@ jQuery(document).ready(function ($) {
                     <div class="categ">
                         <div class="cat">
                             <h3>Categories</h3>
+                            @foreach($allPublicationCategories as $allPublicationCategorie)
                             <ul>
-                                <li><a href="{{url('categorie-details')}}">Lorem ipsum dolor sit amet</a></li>
-                                <li><a href="single.html">Consectetur adipiscing elit</a></li>
-                                <li><a href="single.html">Etiam aliquet convallis enim ut</a></li>
-                                <li><a href="single.html">Donec at pretium dui</a></li>
-                                <li><a href="single.html">Nulla sed massa sagittis venenatis</a></li>
-                                <li><a href="single.html">Praesent nec tortor nec massa</a></li>
+                                <li><a href="{{url('categorie-details')}}">{{$allPublicationCategorie->categorie_name}}</a></li>
                             </ul>
+                            @endforeach
                         </div>
-                        <div class="recent-com">
+<!--                        <div class="recent-com">
                             <h3>Recent Comments</h3>
                             <ul>
                                 <li><a href="single.html">Donec consequat</a> suscipit leo at accumsan. In hac habitasse platea dictumst.</li>
@@ -73,7 +70,7 @@ jQuery(document).ready(function ($) {
                                 <li><a href="single.html">Donec faucibus mollis dolor
                                         <span>in ullamcorper.</span></a></li>
                             </ul>
-                        </div>
+                        </div>-->
                         <div class="view">
                             <a href="single.html">View More</a>
                         </div>

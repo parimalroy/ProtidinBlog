@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use DB;
+use View;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +14,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('frontEnd.layouts.master', function(){
+            $allPublicationCategories= DB::table('tbl_categories')
+                                              ->select('*')
+                                              ->where('publication_status',1)
+                                              ->get();
+            View::share('allPublicationCategories',$allPublicationCategories);
+        });
     }
 
     /**
