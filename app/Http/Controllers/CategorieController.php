@@ -24,7 +24,8 @@ class CategorieController extends Controller {
 
     public function manageCategorie() {
         $footer = 0;
-        $allCategories = DB::table('tbl_categories')
+        $allCategories = DB::table('tbl_categories')->orderBy('id', 'desc')
+//                        ->paginate(3)
                         ->select('*')
                         ->get();
         return view('admin.categories.manageCategorie', ['footers' => $footer])->with(['allCategories'=>$allCategories]);
@@ -51,6 +52,25 @@ class CategorieController extends Controller {
                 ->where('id',$categorieId)
                 ->delete();
         return redirect('categorie-manage');
+    }
+    
+    public function editCategorie($categorieId){
+        $categorieById=DB::table('tbl_categories')
+                            ->where('id',$categorieId)
+                            ->first();
+        $footer = 0;
+        return view('admin.categories.editCategorie',['footers' => $footer,'categorieById' => $categorieById]);
+    }
+    
+    public function updateCategorie(Request $request){
+        $data=array();
+        $data['categorie_name']=$request->categorie_name;
+        $data['categorie_description']=$request->categorie_description;
+        DB::table('tbl_categories')
+                ->where('id',$request->categorie_id)
+                ->update($data);
+        return redirect('categorie-manage')->with('message','Categorie Updated');
+        
     }
 
 }

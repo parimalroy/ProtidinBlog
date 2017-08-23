@@ -1,13 +1,13 @@
 
 <div class="header-info">
     <div class="logo">
-        <a href="index.html"><img src="{{asset('public/frontEnd/')}}/images/logo.png" alt=" " /></a>
+        <h2 class="text-success"><i><strong>Protidin Blogs</strong></i></h2>
     </div>
     <div class="logo-right">
         <span class="menu"><img src="{{asset('public/frontEnd/')}}/images/menu.png" alt=" "/></span>
         <ul class="nav1">
             <li class="cap"><a href="{{URL::to('/')}}">Home</a></li>
-            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="{{url('/')}}">Tutorials</a></li>
             <li><a href="{{url('contact')}}">Contact</a></li>
         </ul>
     </div>

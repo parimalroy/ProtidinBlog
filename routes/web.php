@@ -16,8 +16,8 @@
 //});
 
 Route::get('/','WelcomeController@index');
-Route::get('/read-more','WelcomeController@blogReadmore');
-Route::get('/categorie-details','WelcomeController@detailsCategorie');
+Route::get('/read-more/{id}','WelcomeController@blogReadmore');
+Route::get('/categorie-details/{id}','WelcomeController@detailsCategorie');
 Route::get('/contact','WelcomeController@getContact');
 
 
@@ -33,5 +33,11 @@ Route::get('categorie-manage','CategorieController@manageCategorie')->name('cate
 Route::get('categorie-publish/{id}','CategorieController@unublishCategorie')->name('categorie-publish');
 Route::get('categorie-unpublish/{id}','CategorieController@publishCategorie')->name('categorie-unpublish');
 Route::get('categorie-delete/{id}','CategorieController@deleteCategorie')->name('categorie-delete');
+Route::get('categorie-edit/{id}','CategorieController@editCategorie')->name('categorie-edit');
+Route::post('categorie-update','CategorieController@updateCategorie')->name('categorie-update');
+
+
+Route::get('blog-add','BlogController@index')->name('blog-add');
+Route::post('blog-save','BlogController@saveBlog')->name('blog-add');
 
 

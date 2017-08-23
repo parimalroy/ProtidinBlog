@@ -44,19 +44,22 @@ Manage Catgegorie
                                     <span class="glyphicon glyphicon-arrow-down"></span>
                                 </a>
                                 @endif
-                                <a href="" title="Edit" class="btn btn-info btn-sm">
+                                <a href="{{'categorie-edit/'.$allCategorie->id}}" title="Edit" class="btn btn-info btn-sm">
                                     <span class="glyphicon glyphicon-edit"></span>
                                 </a>
-                                <a href="{{url('categorie-delete/'.$allCategorie->id)}}" title="Delete" class="btn btn-danger btn-sm">
+                                <a href="{{url('categorie-delete/'.$allCategorie->id)}}" title="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Sure are you want to delete !!')">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </td>
                         </tr>
+                        
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>
 </section>
+
 @endsection

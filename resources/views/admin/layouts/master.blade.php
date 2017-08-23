@@ -26,6 +26,15 @@
     <script src="{{asset('public/admin/')}}/js/jquery2.0.3.min.js"></script>
     <script src="{{asset('public/admin/')}}/js/raphael-min.js"></script>
     <script src="{{asset('public/admin/')}}/js/morris.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=your_API_key"></script>
+    <script>
+$(document).ready(function () {
+    $("#datepicker").datepicker();
+});
+    </script>
 </head>
 <body>
     <section id="container">
@@ -268,12 +277,17 @@
                                 <li><a href="{{url('categorie-manage')}}">Manage Categories</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="fontawesome.html">
-                                <i class="fa fa-bullhorn"></i>
-                                <span>Font awesome </span>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                <i class="fa fa-book"></i>
+                                <span>Blog</span>
                             </a>
+                            <ul class="sub">
+                                <li><a href="{{url('blog-add')}}">Add Blog</a></li>
+                                <li><a href="">Manage Blog</a></li>
+                            </ul>
                         </li>
+
                         <li class="sub-menu">
                             <a href="javascript:;">
                                 <i class="fa fa-th"></i>
@@ -351,12 +365,12 @@
         <section id="main-content">
             @yield('content')
             <!-- footer -->
-            <?php if($footers == 1) { ?>
-            <div class="footer">
-                <div class="wthree-copyright">
-                    <p>© 2017 Admin. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+            <?php if ($footers == 1) { ?>
+                <div class="footer">
+                    <div class="wthree-copyright">
+                        <p>© 2017 Admin. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+                    </div>
                 </div>
-            </div>
             <?php } ?>
             <!-- / footer -->
         </section>

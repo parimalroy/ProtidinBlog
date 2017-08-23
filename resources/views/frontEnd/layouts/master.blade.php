@@ -54,25 +54,20 @@ jQuery(document).ready(function ($) {
                             <h3>Categories</h3>
                             @foreach($allPublicationCategories as $allPublicationCategorie)
                             <ul>
-                                <li><a href="{{url('categorie-details')}}">{{$allPublicationCategorie->categorie_name}}</a></li>
+                                <li><a href="{{url('categorie-details/'.$allPublicationCategorie->id)}}">{{$allPublicationCategorie->categorie_name}}</a></li>
                             </ul>
                             @endforeach
                         </div>
-<!--                        <div class="recent-com">
-                            <h3>Recent Comments</h3>
+                        <div class="recent-com">
+                            <h3>Recent Blogs</h3>
+                            @foreach($blogsById as $blogById)
                             <ul>
-                                <li><a href="single.html">Donec consequat</a> suscipit leo at accumsan. In hac habitasse platea dictumst.</li>
-                                <li><a href="single.html">Aliquam erat ipsum,</a> consequat id venenatis suscipit, venenatis sed leo.
-                                    Ut nec lacus in sem eleifend semper id ac dolor.</li>
-                                <li><a href="single.html">Etiam aliquet convallis enim ut 
-                                        <span>Donec at pretium dui</span></a></li>
-                                <li><a href="single.html">Nulla sed massa sagittis</a> venenatis Praesent nec tortor nec massa </li>
-                                <li><a href="single.html">Donec faucibus mollis dolor
-                                        <span>in ullamcorper.</span></a></li>
+                                <li><a href="{{url('read-more/'.$blogById->blog_id)}}">{{$blogById->blog_title}}</li>
                             </ul>
-                        </div>-->
+                            @endforeach
+                        </div>
                         <div class="view">
-                            <a href="single.html">View More</a>
+                            <a href="{{url('/')}}">View More</a>
                         </div>
                     </div>
                 <?php } ?>
