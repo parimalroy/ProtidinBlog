@@ -98,5 +98,6 @@ jQuery(document).ready(function ($) {
             });
         </script>
         <!-- //here ends scrolling icon -->
+        <script src="{{ asset('public/js/app.js') }}"></script>
     </body>
 </html>

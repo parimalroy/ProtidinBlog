@@ -19,69 +19,59 @@
     <div class="related-posts">
         <h3>Related Posts</h3>
         <div class="related-posts-grids">
+            @foreach($getAllBlogs as $getAllBlog)
             <div class="related-posts-grid">
-                <a href="#"><img src="{{asset('public/frontEnd/')}}/images/5.jpg" alt=" " /></a>
-                <h4><a href="#">Maecenas pulvinar</a></h4>
-                <p>Nunc pulvinar augue non felis dictum ultricies. Donec lacinia, 
-                    enim sit amet volutpat sodales, lorem velit fringilla metus, et
-                    semper metus sapien non odio. Nulla facilisi.</p>
+                <a href="#"><img src="{{asset($getAllBlog->blog_image)}}" height="200px" width="200px" alt=" " /></a>
+                <h4><a href="{{url('read-more/'.$getAllBlog->blog_id)}}">{{$getAllBlog->blog_title}}</a></h4>
+                <p>{{$getAllBlog->blog_short_description}}</p>
             </div>
+            @endforeach
             <div class="clearfix"> </div>
         </div>
     </div>
     <div class="comments">
         <h4>Comments</h4>
+        @foreach($commentByBlogsId as $commentByBlogId)
         <div class="comments-info">
             <div class="cmnt-icon-left">
-                <a href="#"><img src="{{asset('public/frontEnd/')}}/images/icon3.png" alt=""/></a>
+                <!--<a href="#"><img src="images/icon3.png" alt=""/></a>-->
             </div>
             <div class="cmnt-icon-right">
-                <p>MAY 13, 2015</p>
-                <p><a href="#">Admin</a></p>
-                <p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>{{$commentByBlogId->	created_at}}</p>
+                <p><a href="#">{{$commentByBlogId->name}}</a></p>
+                <p class="cmmnt">{{$commentByBlogId->comment}}</p>
             </div>
             <div class="clearfix"> </div>
             <div class="aliqua">
-                <a href="#">Reply</a>
+                <!--<a href="#">Reply</a>-->
             </div>
         </div>
-        <div class="comments-info">
-            <div class="cmnt-icon-left">
-                <a href="#"><img src="{{asset('public/frontEnd/')}}/images/icon3.png" alt=""/></a>
-            </div>
-            <div class="cmnt-icon-right">
-                <p>MAY 13, 2015</p>
-                <p><a href="#">Admin</a></p>
-                <p class="cmmnt">Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="clearfix"> </div>
-            <div class="aliqua">
-                <a href="#">Reply</a>
-            </div>
-        </div>
-
-
+        @endforeach
     </div>
+    @if( Auth::user()!==null)
     <div class="consequat">
         <h4>Leave Your Comment Here</h4>
-        <form>
-            <input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
-                        this.value = 'Name';
-                    }" required="">
-            <input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {
-                        this.value = 'Email';
-                    }" required="">
-            <input type="text" value="Subject" onfocus="this.value = '';" onblur="if (this.value == '') {
-                        this.value = 'Subject';
-                    }" required="">
-            <textarea type="text"  onfocus="this.value = '';" onblur="if (this.value == '') {
-                        this.value = 'Message...';
-                    }" required="">Message...</textarea>
-            <input type="submit" value="Submit" class="btn btn-success btn-lg">
+        <form action="{{url('save-comment')}}" method="POST">
+            {{csrf_field()}}
+            <table class="table">
+                <tr>
+                    <td>
+                        <textarea name="comment" rows="3" ></textarea> 
+                        <input type="hidden"  name="user_id" value="{{Auth::user()->id}}">
+                        <input type="hidden"  name="blog_id" value="{{$blogById->blog_id}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" class="btn btn-lg btn-primary" value="Post Comments" name="btn">
+                    </td>
+                </tr>
+            </table>
+
+
         </form>
     </div>
+    @endif
 </div>
 
 @endsection

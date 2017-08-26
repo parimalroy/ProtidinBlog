@@ -23,7 +23,17 @@ class WelcomeController extends Controller {
         $blogsById=DB::table('tbl_blog')
                             ->where('blog_id',$blog_id)
                             ->get();
-        return view('frontEnd.readMore.readmoreContent', ['categorie' => $categories,'blogsById'=>$blogsById]);
+        $getAllBlogs=DB::table('tbl_blog')
+                            ->where('publication_status',1)
+                            ->take(4)
+                            ->get();
+        $commentByBlogsId=DB::table('tbl_comment')
+                                    ->join('users', 'users.id', '=', 'tbl_comment.user_id')
+                                    ->select('tbl_comment.*', 'users.name')
+                                    ->where('publication_status',1)
+                                    ->where('blog_id',$blog_id)
+                                    ->get();
+        return view('frontEnd.readMore.readmoreContent', ['categorie' => $categories,'blogsById'=>$blogsById,'getAllBlogs'=>$getAllBlogs,'commentByBlogsId'=>$commentByBlogsId]);
     }
 
     public function detailsCategorie($categorie_id) {
@@ -37,6 +47,17 @@ class WelcomeController extends Controller {
     public function getContact() {
         $categories = 0;
         return view('frontEnd.contact.contactContent', ['categorie' => $categories]);
+    }
+    
+    public function saveComment(Request $request){
+        $data=array();
+        $data['comment']=$request->comment;
+        $data['user_id']=$request->user_id;
+        $data['blog_id']=$request->blog_id;
+        $data['created_at']= date('Y-m-d H:i:s');
+        DB::table('tbl_comment')->insert($data);
+        return redirect('read-more/'.$request->blog_id);
+       
     }
 
 }

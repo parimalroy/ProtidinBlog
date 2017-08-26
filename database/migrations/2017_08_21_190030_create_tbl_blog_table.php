@@ -23,6 +23,7 @@ class CreateTblBlogTable extends Migration
             $table->string('date');
             $table->text('blog_image');
             $table->tinyInteger('publication_status');
+            $table->integer('hit_count');
             $table->timestamps();
         });
     }

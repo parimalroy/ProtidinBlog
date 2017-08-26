@@ -40,4 +40,10 @@ Route::post('categorie-update','CategorieController@updateCategorie')->name('cat
 Route::get('blog-add','BlogController@index')->name('blog-add');
 Route::post('blog-save','BlogController@saveBlog')->name('blog-add');
 
+Route::post('save-comment','WelcomeController@saveComment');
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
